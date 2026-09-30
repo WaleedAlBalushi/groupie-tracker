@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.Artist.Name}} | Groupie Tracker</title>
+    <link rel="stylesheet" href="/static/style.css?v=2">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-content">
+            <a class="brand" href="/">GROUPIE<span>TRACKER</span></a>
+            <span class="header-label">Artists & concerts</span>
+        </div>
+    </header>
+
+    <main class="container detail-page">
+        <a class="back-link" href="/">← Back to artists</a>
+
+        <section class="artist-profile">
+            <img
+                class="profile-image"
+                src="{{.Artist.Image}}"
+                alt="{{.Artist.Name}}"
+                width="320"
+                height="320"
+            >
+
+            <div class="profile-content">
+                <p class="eyebrow">ARTIST PROFILE</p>
+                <h1>{{.Artist.Name}}</h1>
+
+                <dl class="artist-stats">
+                    <div>
+                        <dt>Active since</dt>
+                        <dd>{{.Artist.CreationDate}}</dd>
+                    </div>
+                    <div>
+                        <dt>First album</dt>
+                        <dd>{{.Artist.FirstAlbum}}</dd>
+                    </div>
+                    <div>
+                        <dt>Members</dt>
+                        <dd>{{len .Artist.Members}}</dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
+
+        <div class="detail-grid">
+            <section class="panel members-panel">
+                <div class="section-heading">
+                    <h2>The members</h2>
+                    <span class="count">{{len .Artist.Members}}</span>
+                </div>
+
+                <ul class="member-list">
+                    {{range .Artist.Members}}
+                    <li>{{.}}</li>
+                    {{end}}
+                </ul>
+            </section>
+
+            <section class="panel">
+                <div class="section-heading">
+                    <h2>Concerts</h2>
+                    <span class="count">{{len .Concerts}} locations</span>
+                </div>
+
+                <div class="concert-list">
+                    {{range $location, $dates := .Concerts}}
+                    <article class="concert-item">
+                        <h3>{{$location}}</h3>
+
+                        <ul class="date-list">
+                            {{range $dates}}
+                            <li>{{.}}</li>
+                            {{end}}
+                        </ul>
+                    </article>
+                    {{else}}
+                    <p class="empty-state">No concert information available.</p>
+                    {{end}}
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer container">
+        <p>Groupie Tracker</p>
+        <p>Artist information provided by the Groupie Tracker API.</p>
+    </footer>
+</body>
+</html>
