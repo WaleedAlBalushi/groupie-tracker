@@ -4,58 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Groupie Tracker</title>
-    <link rel="stylesheet" href="/static/style.css?v=2">
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <header class="site-header">
-        <div class="container header-content">
-            <a class="brand" href="/">GROUPIE<span>TRACKER</span></a>
-            <span class="header-label">Artists & concerts</span>
-        </div>
-    </header>
+<header class="site-header">
+    <div class="container header-content">
+        <a class="brand" href="/">GROUPIE<span>TRACKER</span></a>
+        <span class="header-label">Artists & concerts</span>
+    </div>
+</header>
 
-    <main class="container">
-        <section class="hero">
-            <p class="eyebrow">THE ARTIST COLLECTION</p>
-            <h1>Behind every sound.<br><span>A story to explore.</span></h1>
-            <p class="hero-description">
-                Discover the artists, meet their members, and explore their concert history.
-            </p>
-        </section>
+<main class="container">
+    <section class="hero">
+        <p class="eyebrow">THE ARTIST COLLECTION</p>
+        <h1>Behind every sound.<br><span>A story to explore.</span></h1>
+        <p class="hero-description">Discover artists, their members, and concert history.</p>
 
-        <div class="section-heading">
-            <h2>Explore artists</h2>
-            <span class="count">{{len .}} artists</span>
-        </div>
+        <form class="search-form" action="/" method="get">
+            <input type="search" name="q" value="{{.Query}}" placeholder="Search artist..." aria-label="Search artist">
+            <button type="submit">Search</button>
+        </form>
+    </section>
 
-        <section class="artist-grid" aria-label="Artists">
-            {{range .}}
-            <article class="artist-card">
-                <a class="card-image-link" href="/artist?id={{.ID}}" aria-label="View {{.Name}} details">
-                    <img src="{{.Image}}" alt="{{.Name}}" width="300" height="300" loading="lazy">
-                </a>
+    <div class="section-heading">
+        <h2>Explore artists</h2>
+        <span class="count">{{.Total}} artists</span>
+    </div>
 
-                <div class="card-content">
-                    <p class="eyebrow">SINCE {{.CreationDate}}</p>
-                    <h3>{{.Name}}</h3>
+    <section class="artist-grid" aria-label="Artists">
+        {{range .Artists}}
+        <article class="artist-card">
+            <a class="card-image-link" href="/artist?id={{.ID}}" aria-label="View {{.Name}} details">
+                <img src="{{.Image}}" alt="{{.Name}}" width="300" height="300" loading="lazy">
+            </a>
 
-                    <div class="card-footer">
-                        <span>{{len .Members}} members</span>
-                        <a class="details-link" href="/artist?id={{.ID}}">
-                            View details <span aria-hidden="true">↗</span>
-                        </a>
-                    </div>
+            <div class="card-content">
+                <p class="eyebrow">SINCE {{.CreationDate}}</p>
+                <h3>{{.Name}}</h3>
+
+                <div class="card-footer">
+                    <span>{{len .Members}} members</span>
+                    <a class="details-link" href="/artist?id={{.ID}}">
+                        View details <span aria-hidden="true">↗</span>
+                    </a>
                 </div>
-            </article>
-            {{else}}
-            <p class="empty-state">No artists available.</p>
-            {{end}}
-        </section>
-    </main>
+            </div>
+        </article>
+        {{else}}
+        <p class="empty-state">No artists matched your search.</p>
+        {{end}}
+    </section>
+</main>
 
-    <footer class="site-footer container">
-        <p>Groupie Tracker</p>
-        <p>Artist information provided by the Groupie Tracker API.</p>
-    </footer>
+<footer class="site-footer container">
+    <p>Groupie Tracker</p>
+    <p>Artist information provided by the Groupie Tracker API.</p>
+</footer>
 </body>
 </html>

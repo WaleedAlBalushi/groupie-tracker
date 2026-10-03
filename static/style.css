@@ -1,4 +1,3 @@
-/* Base */
 :root {
     --background: #0b0e14;
     --surface: #131821;
@@ -43,7 +42,6 @@ img {
     margin: 0 auto;
 }
 
-/* Header */
 .site-header {
     border-bottom: 1px solid var(--border);
 }
@@ -62,29 +60,38 @@ img {
     letter-spacing: -0.5px;
 }
 
-.brand span {
+.brand span,
+.eyebrow,
+.details-link,
+.error-code {
     color: var(--accent);
 }
 
-.header-label {
+.header-label,
+.hero-description,
+.card-footer > span,
+.back-link,
+.artist-stats dt,
+.date-list li,
+.empty-state,
+.site-footer,
+.error-page > p:not(.error-code) {
     color: var(--muted);
-    font-size: 13px;
 }
 
-/* Homepage introduction */
 .hero {
     padding: 76px 0 60px;
     max-width: 800px;
 }
 
 .eyebrow {
-    color: var(--accent);
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 2px;
 }
 
-.hero h1 {
+.hero h1,
+.profile-content h1 {
     margin: 18px 0 22px;
     font-size: clamp(36px, 5vw, 64px);
     line-height: 1.12;
@@ -97,11 +104,44 @@ img {
 
 .hero-description {
     max-width: 510px;
-    color: var(--muted);
     font-size: 16px;
 }
 
-/* Section headings */
+.search-form {
+    display: flex;
+    gap: 10px;
+    max-width: 560px;
+    margin-top: 28px;
+}
+
+.search-form input {
+    flex: 1;
+    min-width: 0;
+    padding: 13px 15px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    color: var(--text);
+    font: inherit;
+}
+
+.search-form input:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+.search-form button,
+.error-link {
+    padding: 13px 20px;
+    border: none;
+    border-radius: 10px;
+    background: var(--accent);
+    color: var(--background);
+    font: inherit;
+    font-weight: 800;
+    cursor: pointer;
+}
+
 .section-heading {
     display: flex;
     justify-content: space-between;
@@ -124,7 +164,6 @@ img {
     font-size: 12px;
 }
 
-/* Artist cards */
 .artist-grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -183,12 +222,7 @@ img {
     font-size: 12px;
 }
 
-.card-footer > span {
-    color: var(--muted);
-}
-
 .details-link {
-    color: var(--accent);
     font-weight: 700;
 }
 
@@ -196,7 +230,6 @@ img {
     text-decoration: underline;
 }
 
-/* Artist profile */
 .detail-page {
     padding-top: 32px;
 }
@@ -204,7 +237,6 @@ img {
 .back-link {
     display: inline-block;
     margin-bottom: 32px;
-    color: var(--muted);
     font-size: 14px;
 }
 
@@ -231,10 +263,6 @@ img {
 
 .profile-content h1 {
     margin: 12px 0 28px;
-    font-size: clamp(36px, 5vw, 64px);
-    line-height: 1.1;
-    letter-spacing: -2px;
-    overflow-wrap: anywhere;
 }
 
 .artist-stats {
@@ -245,7 +273,6 @@ img {
 
 .artist-stats dt {
     margin-bottom: 6px;
-    color: var(--muted);
     font-size: 13px;
 }
 
@@ -254,7 +281,6 @@ img {
     font-weight: 700;
 }
 
-/* Members and concerts */
 .detail-grid {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
@@ -308,16 +334,38 @@ img {
     background: var(--background);
     border: 1px solid var(--border);
     border-radius: 6px;
-    color: var(--muted);
     font-size: 12px;
 }
 
 .empty-state {
-    color: var(--muted);
     padding: 24px 0;
 }
 
-/* Footer */
+.error-page {
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 700px;
+}
+
+.error-code {
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.error-page h1 {
+    margin: 8px 0 12px;
+    font-size: clamp(36px, 6vw, 70px);
+}
+
+.error-link {
+    display: inline-block;
+    margin-top: 24px;
+}
+
 .site-footer {
     display: flex;
     justify-content: space-between;
@@ -326,34 +374,31 @@ img {
     margin-top: 72px;
     padding: 28px 0;
     border-top: 1px solid var(--border);
-    color: var(--muted);
     font-size: 12px;
 }
 
-/* Tablet */
 @media (max-width: 1000px) {
     .artist-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }
 
-/* Small screens */
 @media (max-width: 760px) {
     .artist-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .artist-profile {
+    .artist-profile,
+    .detail-grid {
         grid-template-columns: 1fr;
+    }
+
+    .artist-profile {
         gap: 28px;
     }
 
     .profile-image {
         max-width: 320px;
-    }
-
-    .detail-grid {
-        grid-template-columns: 1fr;
     }
 
     .hero {
@@ -365,7 +410,6 @@ img {
     }
 }
 
-/* Mobile */
 @media (max-width: 480px) {
     .artist-grid {
         grid-template-columns: 1fr;
@@ -375,13 +419,16 @@ img {
         padding: 20px;
     }
 
+    .search-form {
+        flex-direction: column;
+    }
+
     .hero h1,
     .profile-content h1 {
         letter-spacing: -1px;
     }
 }
 
-/* Respect reduced-motion preferences */
 @media (prefers-reduced-motion: reduce) {
     .artist-card,
     .card-image-link img {

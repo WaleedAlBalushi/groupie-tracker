@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.Code}} | Groupie Tracker</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header class="site-header">
+    <div class="container header-content">
+        <a class="brand" href="/">GROUPIE<span>TRACKER</span></a>
+    </div>
+</header>
+
+<main class="container error-page">
+    <p class="error-code">{{.Code}}</p>
+    <h1>{{.Title}}</h1>
+    <p>{{.Message}}</p>
+    <a class="error-link" href="/">Back to home</a>
+</main>
+</body>
+</html>
