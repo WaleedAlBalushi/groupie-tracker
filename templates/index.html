@@ -35,7 +35,7 @@
         {{range .Artists}}
         <article class="artist-card">
             <a class="card-image-link" href="/artist?id={{.ID}}" aria-label="View {{.Name}} details">
-                <img src="{{.Image}}" alt="{{.Name}}" width="300" height="300" loading="lazy">
+                <img class="{{if eq .ID 21}}blurred-image{{end}}" src="{{.Image}}" alt="{{.Name}}" width="300" height="300" loading="lazy">
             </a>
 
             <div class="card-content">

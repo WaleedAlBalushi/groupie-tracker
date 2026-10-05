@@ -440,3 +440,7 @@ img {
         transform: none;
     }
 }
+
+.blurred-image {
+    filter: blur(18px);
+}

@@ -18,7 +18,7 @@
     <a class="back-link" href="/">← Back to artists</a>
 
     <section class="artist-profile">
-        <img class="profile-image" src="{{.Artist.Image}}" alt="{{.Artist.Name}}" width="320" height="320">
+        <img class="profile-image{{if eq .Artist.ID 21}} blurred-image{{end}}" src="{{.Artist.Image}}" alt="{{.Artist.Name}}" width="320" height="320">
 
         <div class="profile-content">
             <p class="eyebrow">ARTIST PROFILE</p>
